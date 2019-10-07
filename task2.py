@@ -1,5 +1,4 @@
-# check whether `pwd` is a valid password
-if len(pwd) >= 8 and len(pwd) <= 16:    
+if len(pwd) >= 8 and len(pwd) <= 16:
     sonder = []
     gross = []
     klein = []
@@ -11,11 +10,16 @@ if len(pwd) >= 8 and len(pwd) <= 16:
             num.append(p)
         elif p.isupper() and p.isalpha():
             gross.append(p)
-        else:
+        elif p.islower() and p.isalpha():
             klein.append(p)
+        else:
+            is_valid = False
+            break
 
     if len(klein) > 1 and len(gross) > 1 and len(sonder) > 1 and len(num) > 1:
         is_valid = True
     else:
         is_valid = False
-    print(is_valid)
+else:
+    is_valid = False
+print(is_valid)
